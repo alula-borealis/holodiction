@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 import constant as const
 
@@ -96,14 +97,14 @@ class ParameterSpace:
         print('mass ratio: ', mass_ratio_params)
         print('redshift: ', redshift_params)
 
-        self.grid = np.meshgrid(mass_params, mass_ratio_params, redshift_params, indexing='ij')
+        self.m, self.q, self.z = np.meshgrid(mass_params, mass_ratio_params, redshift_params, indexing='xy')
 
     def get_grid(self):
         # checks if grid has been generated (hasattr) and generates it if it hasn't (self.generate_grid())
-        if not hasattr(self, 'grid'):
+        if not hasattr(self, 'm'):
             self.generate_grid()
         # returns the grid stored in the grid attribute of the instance
-        return self.grid
+        return self.m, self.q, self.z
     
 # Example usage:
 mass_range = np.log10((1e6, 1e9))  # Define the range for mass 
@@ -115,7 +116,23 @@ grid_shape = (5, 5, 5)  # Define the shape of the grid
 param_grid = ParameterSpace(mass_range, mass_ratio_range, redshift_range, grid_shape)
 
 # Get the grid
-grid = param_grid.get_grid()
+m_grid, q_grid, z_grid = param_grid.get_grid()
 
-#print(grid)
+print("m grid: ", m_grid)
+print("q grid: ", q_grid)
+print("z grid: ", z_grid)
 
+fig = plt.figure()
+ax = fig.add_subplot(projection='3d')
+
+ax.scatter(m_grid, q_grid, z_grid)
+
+ax.set_xlabel("mass")
+ax.set_ylabel("mass ratio")
+ax.set_zlabel("redshift")
+
+plt.show()
+
+## do the numbers in each array make sense?
+## not super sure meshgrid is the right thing to use
+# matrix or cartesian?
