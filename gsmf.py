@@ -22,4 +22,3 @@ class GSMF_Schechter(GSMF_Base):
     
     #### continue writing these functions
     #### remember to use _variable to define private functions and variables
-    
