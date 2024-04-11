@@ -24,12 +24,17 @@ class GPF_Power_Law(GPF_Base):
 
         return self._f0 / q_norm
 
-    def __call__(self, galaxy_mass, redshift):
+    def __call__(self, galaxy_mass, mass_ratio, redshift):
         f0_prime = self._f0_prime_func()
         norm_mass = galaxy_mass / self._ref_m
+        af = self._alpha_f
+        bf = self._beta_f
+        gf = self._gamma_f
 
-        ## do I need mass ratio here?
-        pair_fraction = f0_prime * np.power(norm_mass, self._alpha_f) * np.power((1.0 + redshift), self._beta_f)
+        # holodeck also add in a max fraction (between 0 and 1) - might want to add later
+
+        diff_pair_frac = f0_prime * np.power(norm_mass, af) * np.power((1.0 + redshift), bf) * np.power(mass_ratio, gf)
+
 
 
 
