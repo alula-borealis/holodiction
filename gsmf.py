@@ -1,5 +1,6 @@
 import numpy as np
 
+# do I need to make the base classes private?
 class GSMF_Base:
     def __call__(self, *args, **kwargs):
         raise NotImplementedError("Subclasses must implement __call__ method.")

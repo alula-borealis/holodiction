@@ -1,7 +1,7 @@
 import numpy as np
 import constant as const
 
-class GMT_Base():
+class GMT_Base:
     def __call__(self, *args, **kwargs):
         raise NotImplementedError("Subclasses must implement __call__ method.")
     

@@ -1,7 +1,6 @@
 """Constants"""
 
 import numpy as np
-import scipy as sp
 import astropy as ap
 import astropy.constants
 import astropy.units

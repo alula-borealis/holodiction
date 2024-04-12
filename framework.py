@@ -65,7 +65,7 @@ class ParameterGrid:
 mtot = (1, 100, 10)  # Log-spaced between 1 and 100, with 10 points
 mrat = (0.1, 0.9, 5)  # Log-spaced between 0.1 and 0.9, with 5 points
 redz = (0, 2, 8)  # Log-spaced between 0 and 2, with 8 points
-shape = [None, None, None]  # Shape of the parameter space, None for automatic calculation
+shape = [None, None, None] 
 
 param_grid = ParameterGrid(mtot, mrat, redz, shape)
 grids = param_grid.create_grid()
@@ -136,3 +136,4 @@ plt.show()
 ## do the numbers in each array make sense?
 ## not super sure meshgrid is the right thing to use
 # matrix or cartesian?
+# do I implement frequency?
