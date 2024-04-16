@@ -1,7 +1,13 @@
+# libraries
 import numpy as np
 import matplotlib.pyplot as plt
 
+# user-defined modules
 import constant as const
+import gsmf
+import gpf
+import gmt
+import mbulge
 
 # create a class which defines the parameter space
 # will have 3/4 arguments - z, m, q, f
@@ -121,7 +127,7 @@ m_grid, q_grid, z_grid = param_grid.get_grid()
 print("m grid: ", m_grid)
 print("q grid: ", q_grid)
 print("z grid: ", z_grid)
-
+'''
 fig = plt.figure()
 ax = fig.add_subplot(projection='3d')
 
@@ -132,8 +138,10 @@ ax.set_ylabel("mass ratio")
 ax.set_zlabel("redshift")
 
 plt.show()
-
+'''
 ## do the numbers in each array make sense?
 ## not super sure meshgrid is the right thing to use
 # matrix or cartesian?
 # do I implement frequency?
+
+

@@ -1,11 +1,11 @@
 import numpy as np
 import constant as const
 
-class GPF_Base:
+class GPFBase:
     def __call__(self, *args, **kwargs):
         raise NotImplementedError("Subclasses must implement __call__ method.")
     
-class GPF_Power_Law(GPF_Base):
+class GPFPowerLaw(GPFBase):
     def __init__(self, alpha_f=0.0, beta_f=0.8, gamma_f=0.0, f0=0.025, q_max=1.0, q_min=0.25, ref_m=10e11):
         # see equation 12 and 14 from [Chen 2019] - think they use this one in holodeck
         # holodeck have q_max=1.0 and q_min=0.25 but can't find in literature - Mundy et al??

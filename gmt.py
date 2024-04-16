@@ -1,12 +1,12 @@
 import numpy as np
 import constant as const
 
-class GMT_Base:
+class GMTBase:
     def __call__(self, *args, **kwargs):
         raise NotImplementedError("Subclasses must implement __call__ method.")
     
-class GMT_Power_Law(GMT_Base):
-    def __init__(self, tau_0=1.05, alpha_tau=0.0, beta_tau=-0.5, gamma_tau=0.0, ref_m=10e11, h0=0.7):
+class GMTPowerLaw(GMTBase):
+    def __init__(self, tau_0=1.05, alpha_tau=0.0, beta_tau=-0.5, gamma_tau=0.0, ref_m=10**11, h0=0.7):
         self._tau_0 = tau_0
         self._alpha_tau = alpha_tau
         self._beta_tau = beta_tau

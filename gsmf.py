@@ -1,11 +1,11 @@
 import numpy as np
 
 # do I need to make the base classes private?
-class GSMF_Base:
+class GSMFBase:
     def __call__(self, *args, **kwargs):
         raise NotImplementedError("Subclasses must implement __call__ method.")
     
-class GSMF_Schechter(GSMF_Base):
+class GSMFSchechter(GSMFBase):
     # see equations 8-11 in [Chen 2019]
     def __init__(self, phi_0=-2.77, phi_z=-0.27, log_m0=11.24, alpha_0=-1.24, alpha_z=-0.03):
         self._phi_0 = phi_0
