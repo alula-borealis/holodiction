@@ -1,6 +1,7 @@
 from astropy.cosmology import WMAP9 as cosmo
 import astropy.units as u
 
+# defining the cosmology as same as holodeck
 class Cosmology:
     def __init__(self):
         self._h_0 = cosmo.H(0)  #.to(u.) convert to units here or later?
@@ -9,7 +10,7 @@ class Cosmology:
         Hz = cosmo.H(redshift) #.to(u.) convert units here or not?
         return Hz
 
-    def _dt_dz_func(self, redshift):
+    def __call__(self, redshift):
         # dt/dz = 1/(1+z)*H(0) - H(z)
 
         Hz = self._hz_func(redshift)

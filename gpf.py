@@ -35,6 +35,8 @@ class GPFPowerLaw(GPFBase):
 
         diff_pair_frac = f0_prime * np.power(norm_mass, af) * np.power((1.0 + redshift), bf) * np.power(mass_ratio, gf)
 
+        return diff_pair_frac
+
 
 
 

@@ -4,7 +4,8 @@ import constant as const
 class GMTBase:
     def __call__(self, *args, **kwargs):
         raise NotImplementedError("Subclasses must implement __call__ method.")
-    
+
+# same parameterization as pair fraction, see Chen 2019 eqn 16
 class GMTPowerLaw(GMTBase):
     def __init__(self, tau_0=1.05, alpha_tau=0.0, beta_tau=-0.5, gamma_tau=0.0, ref_m=10**11, h0=0.7):
         self._tau_0 = tau_0

@@ -19,7 +19,7 @@ class GSMFSchechter(GSMFBase):
         return np.power(10.0, _log_phi)
     
     def _scale_m_func(self):
-        # holodeck has this function as M_0 + M_z * z but with M_z = 0.0
+        # holodeck has this function as M_0 + M_z * z but with M_z = 0.0, for consistency?
         return np.power(10.0, self._log_m0)
     
     def _alpha_func(self, redshift):
