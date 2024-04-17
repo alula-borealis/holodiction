@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 
 # user-defined modules
 import constant as const
+from cosmology import Cosmology as cosmo
 import gsmf
 import gpf
 import gmt
@@ -145,3 +146,36 @@ plt.show()
 # do I implement frequency?
 
 
+# instantiating classes and testing
+schechter_inst = gsmf.GSMFSchechter()
+pair_fraction_inst = gpf.GPFPowerLaw()
+merger_time_inst = gmt.GMTPowerLaw()
+cosmo_inst = cosmo()
+
+galaxy_stellar_mass = schechter_inst(m_grid, z_grid)
+galaxy_pair_fraction = pair_fraction_inst(m_grid, q_grid, z_grid)
+galaxy_merger_time = merger_time_inst(m_grid, q_grid, z_grid)
+
+# calculate galaxy merger rate class from Chen 2019
+class DifferentialGalaxyMergeRate:
+    def __init__(self, gsmf_model, gpf_model, gmt_model, cosmology):
+        self.gsmf_model = gsmf_model
+        self.gpf_model = gpf_model
+        self.gmt_model = gmt_model
+        self.cosmology = cosmology
+
+    def calc_merger_rate(self, m_grid, q_grid, z_grid):
+        gsmf_values = self.gsmf_model(m_grid, z_grid)
+        gpf_values = self.gpf_model(m_grid, q_grid, z_grid)
+        gmt_values = self.gmt_model(m_grid, q_grid, z_grid)
+        cosmo = self.cosmology(z_grid)
+
+        merger_rate = (gsmf_values / (m_grid * np.log(10.0))) * (gpf_values / gmt_values) * cosmo
+
+        return merger_rate
+    
+rate_assign = DifferentialGalaxyMergeRate(schechter_inst, pair_fraction_inst, merger_time_inst, cosmo_inst)
+
+galaxy_merger_rate = rate_assign.calc_merger_rate(m_grid, q_grid, z_grid)
+
+print("merger rate: ", galaxy_merger_rate)
