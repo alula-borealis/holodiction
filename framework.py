@@ -114,10 +114,10 @@ class ParameterSpace:
         return self.m, self.q, self.z
     
 # Example usage:
-mass_range = np.log10((1e6, 1e9))  # Define the range for mass 
+mass_range = np.log10((1e9*const.MSOL, 1e12*const.MSOL))  # Define the range for mass 
 mass_ratio_range = np.log10((0.1, 1))  # Define the range for mass ratio 
 redshift_range = np.log10((1, 5))  # Define the range for redshift 
-grid_shape = (5, 5, 5)  # Define the shape of the grid
+grid_shape = (3, 3, 3)  # Define the shape of the grid
 
 # Instantiate the ParameterGrid class
 param_grid = ParameterSpace(mass_range, mass_ratio_range, redshift_range, grid_shape)
@@ -178,4 +178,14 @@ rate_assign = DifferentialGalaxyMergeRate(schechter_inst, pair_fraction_inst, me
 
 galaxy_merger_rate = rate_assign.calc_merger_rate(m_grid, q_grid, z_grid)
 
+seconds_to_gyr = 3.15576e16
+km_to_mpc = 3.24078e-20
+
+gmr_correct_units = (galaxy_merger_rate*seconds_to_gyr) / km_to_mpc
+
 print("merger rate: ", galaxy_merger_rate)
+print("CORRECT UNITS: ", gmr_correct_units)
+
+
+### currently checking MSOL makes sense and dimensional analysis
+### find merger rate code

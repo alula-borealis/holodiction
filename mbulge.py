@@ -34,3 +34,5 @@ class MbulgeRelation(MbulgeBase):
         _standard_d = self._epsilon
         #_distribution = np.random.lognormal or scipy?
         # scipy.stats.lognorm doesn't seem to import but scipy does, issue between pip and conda?
+
+    ### !! Need to add __call__

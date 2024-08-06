@@ -7,7 +7,7 @@ class GMTBase:
 
 # same parameterization as pair fraction, see Chen 2019 eqn 16
 class GMTPowerLaw(GMTBase):
-    def __init__(self, tau_0=1.05, alpha_tau=0.0, beta_tau=-0.5, gamma_tau=0.0, ref_m=10**11, h0=0.7):
+    def __init__(self, tau_0=1.05, alpha_tau=0.0, beta_tau=-0.5, gamma_tau=0.0, ref_m=(10**11)*const.MSOL, h0=0.7):
         self._tau_0 = tau_0
         self._alpha_tau = alpha_tau
         self._beta_tau = beta_tau

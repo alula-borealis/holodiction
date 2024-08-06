@@ -1,5 +1,7 @@
 import numpy as np
 
+import constant as const
+
 # do I need to make the base classes private?
 class GSMFBase:
     def __call__(self, *args, **kwargs):
@@ -20,7 +22,7 @@ class GSMFSchechter(GSMFBase):
     
     def _scale_m_func(self):
         # holodeck has this function as M_0 + M_z * z but with M_z = 0.0, for consistency?
-        return np.power(10.0, self._log_m0)
+        return np.power(10.0, self._log_m0) * const.MSOL
     
     def _alpha_func(self, redshift):
         return self._alpha_0 + self._alpha_z * redshift
